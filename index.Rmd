@@ -1,71 +1,59 @@
 ---
 title: "A3: Incarceration"
+author: "By: Nicholas Chung"
 output: html_document
 ---
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+In this assignment I will be analyzing manifestations of racism within the United States prison system. It is a large problem in today's world in which people of color have been disproportionately incarcerated due to things such as over-policing and the war on drugs. The 5 variables I will be analyzing is the year, total population, total jail population rate, black jail population rate, and white jail population rate. I chose these variables because I think they will help determine any trends that have be seen over the years and because I feel it will help show the inequalities within the United States incarceration system.
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
-
-### The Dataset
-
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
-
-
-### Trends Over Time Chart
-
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r summary, echo = FALSE, include = FALSE}
+options(scipen = 999)
+source("summary.R")
 ```
 
+
+I first chose to calculate the average population during the year 2018 to create something to reference to, which I found to be `r avg_pop_in_2018`. I then decided to calculate the average jail population rate during the year 2018 to gain another way to compare the measures of incarceration which I found to be `r avg_jaiL_pop_in_2018`. I then calculated the average black jail population rate during the year 2018 which I found to be `r avg_black_jaiL_pop_in_2018`. Finally I calculated the average white jail population rate during the year 2018 which I found to be `r avg_white_jaiL_pop_in_2018`. Some things I noticed is that the average black jail population rate is almost 5 times more than the average white jail population rate. This alone shows the vast differences in incarceration by race. On average, people of color are incarcerated more than white people. This also means that people of color make up most of the average population in jail during the year 2018. Note: I would have used 2024 as the year of focus, however, the dataset only goes up to 2018.
+### The Dataset
+
+Who collected the data?\
+The data was collected by Vera Institute.
+
+How was the data collected or generated?\
+The data was collected by two Bureau of Justice Statistics (BJS) data collections, the first one being the Census of Jails (COJ) and the second being the Annual Survey of Jails (ASJ).
+
+Why was the data collected?\
+This data was collected to show inequalities in both jail and prison incarcerations.
+
+How many observations (rows) are in your data?\
+There are 91031 rows in the data I chose.
+
+How many features (columns) are in the data?\
+There are 23 columns in the data I chose.
+
+What, if any, ethical questions or questions of power do you need to consider when working with this data?\
+One possible ethical question I need to consider when working with this data is the inclusion of all people. Since the data set does not include every race/ethnicity, it can result in certain ethnicities being not represented in the data. It also doesn't take into account people being numerous races (for example half black and half white), so this may need to be taken into consideration when working with this data.
+
+What are possible limitations or problems with this data? (at least 200 words)
+Some possible limitations or problems when it comes to this data set is the year it goes up to. This data set only goes up to the year 2018 which means the most recent year I am able to analyze is 2018. However, things may have changed from 2018 to 2024 which in turn means that this data may not be the most accurate representation of today's system. Another possible limitation is that there are a fair amount of N/A spots in the data. This could result in the results being not 100% accurate since some data will not be included. For example in a given row the black jail population rate could be something like 600, however, the white jail population rate could be N/A which could impact the results of the data. Another possible limitation of this data is that there is really no way of knowing what percentage of the people incarcerated were wrongly incarcerated. Not knowing this could have large impacts on the results. Another possible limitation is that we do not know the severity of the crime. Knowing the severity of the crime could help determine if the people being incarcerated were motivated by race/ethnicity, or if they were strictly motivated by the crime itself.
+
+### Trends Over Time Chart
+```{r chart_1, echo = FALSE, code = readLines("chart_1.R")}
+```
+
+I included this chart to highlight the differences in incarcerations for black and white races. The pattern that emerged from this chart is that as time passed, the black jail population rate decreased and that the white jail population increased slightly. This shows that for a long time, the black jail popluation rate was signifcantly larger which could show trends of inequality in our justice system. The black jail pop rate going down over time could be explained by the numerous movements that have occurred over the past few years. These black rights movements likely play a large role in this trend, however, despite the trend going down it is still significantly higher than the white jail pop rate trend.
+
 ### Variable Comparison Chart
+```{r chart_2, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart_2.R")}
+```
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+I included this chart to compare the Black Jail Pop Rate per county vs the Total Jail Pop Rate per county to look for correlations/patterns between the two. The chart shows that there is a bigger cluster between a Total Jail Pop Rate of 0 to 400. The chart also shows that the line of best shape increasing. Because of this, we can see that as Total Jail Pop Rate increases, the Black Jail Pop Rate increases with it (sometimes even more). This reveals to us that in the United States, whenever the Total Jail Pop Rate increases that the rate of black people also increases which can help show the inequalities in our justice system.
 
 ### Map
+```{r map_3, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("map_3.R")}
+```
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-
+These maps of the United States show the average pop rate for black and white people in each state. These maps show which states have the highest black jail population rate by using red to indicate the highest rate and yellow to indicate the lowest rate. Similarly these maps also show which states have the highest white jail population rates by using red to indicate the highest rate and yellow to indicate the lowest rate. It is shown in the Black Jail Pop Rate map that states such as Utah, Arizona, and Missouri have high rates. This can be compared to the White Jail Pop Rate map where in the same states, the rates are high, however, it still doesn't come close. It shows that there is a possibility that in these states, there is more racial inequality when it comes to incarcerations. We can also see that in other states there is also disproportionality in the black jail population rates compared to white jail population rates.
